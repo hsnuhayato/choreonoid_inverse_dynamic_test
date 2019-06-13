@@ -1,6 +1,12 @@
 # choreonoid_inverse_dynamic_test
 コレオノイドの逆運動学計算のテスト。
+#テスト方法
 
+```bash
+$ cmake .;make;./1link
+```
+
+#テスト内容
 モデルは1linkbot.yamlにて定義した。単純な1linkのみのモデルを用いた。
 関節角度を0[deg]から90[deg]へ2秒間で移動するように補間し、
 この軌道を実現するためのトルクをchoreonoidのライブラリと自力でラグランジュ法でそれぞれ計算し、トルクを比較する。
