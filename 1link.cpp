@@ -78,6 +78,7 @@ int main(int argc, char *argv[]) {
   std::deque<double> q_deque;
   Interplation5(q_deque, 0.0, 0.0, 0.0, cnoid::radian(tar_q), 0.0, 0.0, tar_time, dt);
 
+  bool pass = 1;
   while (!q_deque.empty()) {
     robot -> joint(0) -> q() = q_deque.at(0);
     robot -> joint(0) -> dq()  = (robot -> joint(0) -> q() - q_pre) / dt;
@@ -101,9 +102,12 @@ int main(int argc, char *argv[]) {
     ofs << robot -> joint(0) -> u() << " " <<   tau_lagrange <<
       " " <<  robot -> joint(0) -> q() << endl;
 
-    assert(fabs(robot -> joint(0) -> u() - tau_lagrange) < NEAR0);
+    if(fabs(robot -> joint(0) -> u() - tau_lagrange) > NEAR0) {
+      pass = 0;
+    };
   }
 
+  assert(pass);
   cout << "test ok" << endl;
   
   return 0;
