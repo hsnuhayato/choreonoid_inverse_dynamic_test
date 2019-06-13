@@ -1,0 +1,32 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+angleUnit: degree
+name: 1linkbot
+
+links:
+  -
+    name: BASE
+    jointType: fixed
+    mass: 0.0
+    centerOfMass: [ 0, 0, 0 ]
+    inertia: [
+      1, 0, 0,
+      0, 1, 0,
+      0, 0, 1 ]
+  -
+    name: J1
+    parent: BASE
+    jointType: revolute
+    jointAxis: [ 0, 1, 0 ]
+    jointId: 0
+    translation: [ 0, 0, 0 ]
+    jointRange: [ -177, 177 ]
+    jointVelocityRange: [ -180, 180 ]
+    rotorInertia: 0
+    mass: 2.0
+    centerOfMass: [ 0, 0, -0.15]
+    inertia: [
+      1, 0, 0,
+      0, 0.045, 0,
+      0, 0, 1 ]
+ 
